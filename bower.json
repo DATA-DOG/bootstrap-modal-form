@@ -1,0 +1,25 @@
+{
+  "name": "bootstrap-modal-ajax-form",
+  "version": "0.0.1",
+  "homepage": "https://github.com/DATA-DOG/bootstrap-modal-form",
+  "authors": [
+    "Data Dog"
+  ],
+  "description": "Bootstrap modal ajax forms and confirmation modals.",
+  "main": "dist/modal.min.js",
+  "keywords": [
+    "bootstrap",
+    "ajax",
+    "jQuery",
+    "form",
+    "confirmation",
+    "prompt",
+    "modal"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}
