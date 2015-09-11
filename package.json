@@ -1,8 +1,8 @@
 {
   "name": "bootstrap-modal-ajax-form",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bootstrap modal ajax forms and confirmation modals.",
-  "main": "modal.js",
+  "main": "dist/modal.min.js",
   "author": "Data Dog",
   "licenses": [
     {
