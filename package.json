@@ -1,0 +1,13 @@
+{
+  "name": "bootstrap-modal-ajax-form",
+  "version": "0.0.1",
+  "description": "Bootstrap modal ajax forms and confirmation modals.",
+  "main": "modal.js",
+  "author": "Data Dog",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0"
+  }
+}
