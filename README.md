@@ -6,7 +6,7 @@ Using this library, you can easily:
  * Display **modal confirmations** with custom messages
  * Load modal content dynamically
 
-This library depends on (Bootstrap)[http://getbootstrap.com/] ~3.3, (Bootstrap modal library)[http://getbootstrap.com/javascript/#modals] and (jQuery)[http://jquery.com/] > 1.9.
+This library depends on [Bootstrap](http://getbootstrap.com/) ~3.3, [Bootstrap modal library](http://getbootstrap.com/javascript/#modals) and [jQuery](http://jquery.com/) > 1.9.
 
 ## Installiation
 
