@@ -104,11 +104,19 @@
         var title = $(this).data('title') || 'Delete';
         var text = $(this).data('text') || 'Are you sure you want to remove this item?';
         var that = this;
+        var buttons = $('#bsModalConfirmButtons');
 
         displayDefaultContent($('#bsModalConfirmContent'));
 
         modalContent.find('#bsModalTitle').html(title);
-        modalContent.find('.modal-body').html(text + $('#bsModalConfirmButtons').html());
+
+        if (buttons.data('append')) {
+            modalContent.find('.modal-body').html(text);
+            modalContent.find('.modal-content').append(buttons.html());
+        } else {
+            modalContent.find('.modal-body').html(text + buttons.html());
+        }
+
         modal.modal('show');
 
         modalContent.find('.js-confirm-btn').off().on('click', function() {
