@@ -65,28 +65,29 @@
     }
 
     function onJsFormSubmit(event) {
+        var form = $(this);
         var formData = new FormData(this);
 
         $(document).trigger('bsmodal.js-form.submitted', [$(this), formData]);
 
         $.ajax({
-            url: $(this).attr("action"),
-            type: $(this).attr("method"),
+            url: form.attr("action"),
+            type: form.attr("method"),
             data: formData,
             processData: false,
             contentType: false,
             success: function(data, status, xhr) {
-                $(document).trigger('bsmodal.js-form.success', [data, status, xhr]);
+                $(document).trigger('bsmodal.js-form.success', [data, status, xhr, form]);
             },
             complete: function() {
-                $(document).trigger('bsmodal.js-form.completed');
+                $(document).trigger('bsmodal.js-form.completed', [form]);
             }
         });
 
         event.preventDefault();
     }
 
-    function onJsFormSuccess(event, data, status, xhr) {
+    function onJsFormSuccess(event, data, status, xhr, form) {
         if (xhr.status == 201) {
             modal.modal('hide');
 
@@ -96,7 +97,13 @@
                 window.location.reload();
             }
         } else {
-            displayContent(data);
+            if (modal.hasClass('in') && modal.find('.js-form')) {
+                displayContent(data);
+            } else if (form.attr('id')) {
+                form.html($(data).find('#' + form.attr('id')));
+            } else {
+                console.debug(".js-form must have an id attribute or be in modal window")
+            }
         }
     }
 
