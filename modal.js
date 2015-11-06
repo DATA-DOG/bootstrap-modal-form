@@ -93,6 +93,8 @@
 
             if (data.redirect) {
                 window.location = data.redirect;
+            } else if (data.event) {
+                $(document).trigger(data.event, [data.data]);
             } else {
                 window.location.reload();
             }
