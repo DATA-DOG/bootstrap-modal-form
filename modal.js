@@ -61,7 +61,7 @@
 
     function onJsModalClick(event) {
         var elem = $(this);
-        var contentUrl = elem.data('url') || elem.href;
+        var contentUrl = elem.data('url') || elem.attr('href');
         $(document).trigger('bsmodal.js-modal.clicked', [elem]);
 
         $.fn.loadModal(contentUrl);
