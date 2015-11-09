@@ -15,6 +15,14 @@
         $(document).on('bsmodal.js-form.success', onJsFormSuccess);
     });
 
+    $.fn.loadModal = function(contentUrl) {
+        displayDefaultContent($("#bsModalContent"));
+        loadModalContent(contentUrl);
+
+        modal.modal('show');
+    };
+
+
     function injectTemplates() {
         var modalTemplate =
             '<div class="modal fade message-modal" id="modalHolder" tabindex="-1" role="dialog" aria-hidden="true">' +
@@ -53,13 +61,10 @@
 
     function onJsModalClick(event) {
         var elem = $(this);
-
+        var contentUrl = elem.data('url') || elem.href;
         $(document).trigger('bsmodal.js-modal.clicked', [elem]);
 
-        displayDefaultContent($("#bsModalContent"));
-        loadModalContent(elem);
-
-        modal.modal('show');
+        $.fn.loadModal(contentUrl);
 
         event.preventDefault();
     }
@@ -145,9 +150,7 @@
         event.preventDefault();
     }
 
-    function loadModalContent(modal) {
-        var contentUrl = modal.data('url') || modal.attr('href');
-
+    function loadModalContent(contentUrl) {
         $.get(contentUrl, function (data) {
             displayContent(data);
 
