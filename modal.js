@@ -13,6 +13,7 @@
         $(document).on('submit', '.js-form', onJsFormSubmit);
         $(document).on('click', '.js-confirm', onJsConfirmClick);
         $(document).on('bsmodal.js-form.success', onJsFormSuccess);
+        $(document).on('bsmodal.dialog-class', changeDialogClass);
     });
 
     $.fn.loadModal = function(contentUrl) {
@@ -21,7 +22,6 @@
 
         modal.modal('show');
     };
-
 
     function injectTemplates() {
         var modalTemplate =
@@ -62,11 +62,16 @@
     function onJsModalClick(event) {
         var elem = $(this);
         var contentUrl = elem.data('url') || elem.attr('href');
+        changeDialogClass(elem.data('size') || '');
         $(document).trigger('bsmodal.js-modal.clicked', [elem]);
 
         $.fn.loadModal(contentUrl);
 
         event.preventDefault();
+    }
+
+    function changeDialogClass(event, class) {
+        modalContent.setClass('modal-dialog ' + class);
     }
 
     function onJsFormSubmit(event) {
@@ -131,6 +136,7 @@
             modalContent.find('.modal-body').html(text + buttons.html());
         }
 
+        changeDialogClass($(this).data('size') || '');
         modal.modal('show');
 
         modalContent.find('.js-confirm-btn').off().on('click', function() {

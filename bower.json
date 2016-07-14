@@ -6,7 +6,7 @@
     "Data Dog"
   ],
   "description": "Bootstrap modal ajax forms and confirmation modals.",
-  "main": "dist/modal.min.js",
+  "main": "modal.js",
   "keywords": [
     "bootstrap",
     "ajax",
