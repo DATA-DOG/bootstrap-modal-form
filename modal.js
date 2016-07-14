@@ -71,7 +71,7 @@
     }
 
     function changeDialogClass(event, class) {
-        modalContent.setClass('modal-dialog ' + class);
+        modalContent.attr('class', 'modal-dialog ' + class);
     }
 
     function onJsFormSubmit(event) {
