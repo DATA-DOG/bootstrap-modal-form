@@ -62,7 +62,7 @@
     function onJsModalClick(event) {
         var elem = $(this);
         var contentUrl = elem.data('url') || elem.attr('href');
-        changeDialogClass(elem.data('size') || '');
+        changeDialogClass(null, elem.data('size') || '');
         $(document).trigger('bsmodal.js-modal.clicked', [elem]);
 
         $.fn.loadModal(contentUrl);
@@ -136,7 +136,7 @@
             modalContent.find('.modal-body').html(text + buttons.html());
         }
 
-        changeDialogClass($(this).data('size') || '');
+        changeDialogClass(null, $(this).data('size') || '');
         modal.modal('show');
 
         modalContent.find('.js-confirm-btn').off().on('click', function() {
