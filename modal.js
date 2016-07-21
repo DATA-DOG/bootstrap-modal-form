@@ -14,14 +14,20 @@
         $(document).on('click', '.js-confirm', onJsConfirmClick);
         $(document).on('bsmodal.js-form.success', onJsFormSuccess);
         $(document).on('bsmodal.dialog-class', changeDialogClass);
+
+        modal.on('hidden.bs.modal', destroyModalContent);
     });
 
     $.fn.loadModal = function(contentUrl) {
-        displayDefaultContent($("#bsModalContent"));
+        destroyModalContent();
         loadModalContent(contentUrl);
 
         modal.modal('show');
     };
+
+    function destroyModalContent() {
+      displayDefaultContent($("#bsModalContent"));
+    }
 
     function injectTemplates() {
         var modalTemplate =
