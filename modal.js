@@ -76,8 +76,8 @@
         event.preventDefault();
     }
 
-    function changeDialogClass(event, class) {
-        modalContent.attr('class', 'modal-dialog ' + class);
+    function changeDialogClass(event, className) {
+        modalContent.attr('class', 'modal-dialog ' + className);
     }
 
     function onJsFormSubmit(event) {
