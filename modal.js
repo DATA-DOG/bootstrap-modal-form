@@ -146,12 +146,14 @@
         modal.modal('show');
 
         modalContent.find('.js-confirm-btn').off().on('click', function() {
+            var url = $(that).data('url') || $(that).attr('href');
+
             if ($(that).data('no-ajax') || $(that).hasClass('js-no-ajax')) {
-                return window.location.href = $(that).attr('href');
+                return window.location.href = url;
             }
 
             $.ajax({
-                url: $(that).attr("href"),
+                url: url,
                 type: 'GET',
                 success: function() {
                     window.location.reload();
