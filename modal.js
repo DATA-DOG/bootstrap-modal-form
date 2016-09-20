@@ -118,7 +118,7 @@
             if (modal.hasClass('in') && modal.find('.js-form')) {
                 displayContent(data);
             } else if (form.attr('id')) {
-                form.html($(data).find('#' + form.attr('id')).html());
+                form.html($("<div>" + data + "</div>").find('#' + form.attr('id')).html());
             } else {
                 console.debug(".js-form must have an id attribute or be in modal window")
             }
