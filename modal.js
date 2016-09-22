@@ -117,8 +117,10 @@
         } else {
             if (modal.hasClass('in') && modal.find('.js-form')) {
                 displayContent(data);
+                $(document).trigger('bsmodal.js-form.loaded', [modalContent]);
             } else if (form.attr('id')) {
                 form.html($("<div>" + data + "</div>").find('#' + form.attr('id')).html());
+                $(document).trigger('bsmodal.js-form.loaded', [form]);
             } else {
                 console.debug(".js-form must have an id attribute or be in modal window")
             }
