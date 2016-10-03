@@ -84,12 +84,12 @@
         var form = $(this);
         var formData = new FormData(this);
 
-        $(document).trigger('bsmodal.js-form.submitted', [$(this), formData]);
+        $(document).trigger('bsmodal.js-form.submitted', [form, formData]);
 
         $.ajax({
-            url: form.attr("action"),
-            type: form.attr("method"),
-            data: formData,
+            url: this.action,
+            type: this.method,
+            data: this.method == "get" ? form.serialize() : formData,
             processData: false,
             contentType: false,
             success: function(data, status, xhr) {
