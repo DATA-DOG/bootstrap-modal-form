@@ -128,9 +128,9 @@
     }
 
     function onJsConfirmClick(event) {
-        var title = $(this).data('title') || 'Delete';
-        var text = $(this).data('text') || 'Are you sure you want to remove this item?';
-        var that = this;
+        var that = $(this);
+        var title = that.data('title') || 'Delete';
+        var text = that.data('text') || 'Are you sure you want to remove this item?';
         var buttons = $('#bsModalConfirmButtons');
 
         displayDefaultContent($('#bsModalConfirmContent'));
@@ -144,19 +144,19 @@
             modalContent.find('.modal-body').html(text + buttons.html());
         }
 
-        changeDialogClass(null, $(this).data('size') || '');
+        changeDialogClass(null, that.data('size') || '');
         modal.modal('show');
 
         modalContent.find('.js-confirm-btn').off().on('click', function() {
-            var url = $(that).data('url') || $(that).attr('href');
+            var url = that.data('url') || that.attr('href');
 
-            if ($(that).data('no-ajax') || $(that).hasClass('js-no-ajax')) {
+            if (that.data('no-ajax') || that.hasClass('js-no-ajax')) {
                 return window.location.href = url;
             }
 
             $.ajax({
                 url: url,
-                type: 'GET',
+                type: that.data('method') || "GET",
                 success: function() {
                     window.location.reload();
                 }
