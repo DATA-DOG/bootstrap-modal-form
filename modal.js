@@ -107,13 +107,7 @@
         if (xhr.status == 201) {
             modal.modal('hide');
 
-            if (data.redirect) {
-                window.location = data.redirect;
-            } else if (data.event) {
-                $(document).trigger(data.event, [data.data]);
-            } else {
-                window.location.reload();
-            }
+            onHttpResponse(data);
         } else {
             if (modal.hasClass('in') && modal.find('.js-form')) {
                 displayContent(data);
@@ -124,6 +118,16 @@
             } else {
                 console.debug(".js-form must have an id attribute or be in modal window")
             }
+        }
+    }
+
+    function onHttpResponse(data) {
+        if (data.redirect) {
+            window.location = data.redirect;
+        } else if (data.event) {
+            $(document).trigger(data.event, [data.data]);
+        } else {
+            window.location.reload();
         }
     }
 
@@ -157,9 +161,7 @@
             $.ajax({
                 url: url,
                 type: that.data('method') || "GET",
-                success: function() {
-                    window.location.reload();
-                }
+                success: onHttpResponse
             });
         });
 
