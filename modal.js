@@ -25,7 +25,7 @@
         modal.modal('show');
     };
 
-    $.fn.showModal = function(contentUrl, size) {
+    $.fn.showModal = function(content, size) {
         destroyModalContent();
         changeDialogClass(null, size || '');
         displayContent(content);
