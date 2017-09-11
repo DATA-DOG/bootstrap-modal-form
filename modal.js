@@ -25,6 +25,16 @@
         modal.modal('show');
     };
 
+    $.fn.showModal = function(contentUrl, size) {
+        destroyModalContent();
+        changeDialogClass(null, size || '');
+        displayContent(content);
+
+        $(document).trigger('bsmodal.js-modal.loaded', [modalContent]);
+
+        modal.modal('show');
+    };
+
     function destroyModalContent() {
       displayDefaultContent($("#bsModalContent"));
     }
